@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.mySpringProject.model.entity.FeatureRequest;
 import java.util.List;
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -28,7 +29,7 @@ public class GitHubFeatureController {
 
     @PostMapping
     public ResponseEntity<GitHubIssueResponseDTO> createFeatureRequest(
-            @RequestBody FeatureRequestDTO request) {
+            @Valid @RequestBody FeatureRequestDTO request) {
 
         log.info("📨 Received feature request from: {}", request.getCustomerName());
         log.debug("Request details: title={}, product={}, priority={}",
@@ -102,7 +103,7 @@ public class GitHubFeatureController {
         return ResponseEntity.ok(request);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<FeatureRequest> updateFeatureRequest(
+    public ResponseEntity<FeatureRequest> updateFeatureRequest(@Valid
             @PathVariable Long id,
             @RequestBody FeatureRequestDTO request) {
 

@@ -55,8 +55,7 @@ public class FeatureRequestService {
             log.info("📨 Processing feature request from: {}", request.getCustomerName());
 
             // Step 1: Validate
-            request.validate();
-            log.debug("✓ Validation passed");
+
 
             // Step 2: Create Entity from DTO
             FeatureRequest entity = convertDtoToEntity(request);
